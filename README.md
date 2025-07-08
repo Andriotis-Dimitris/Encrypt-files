@@ -5,7 +5,7 @@ This repository contains a simple file encryption and decryption script using th
 
 ## Files
 - **`ransomware.py`**: This script encrypts all non-excluded files in the directory using a randomly generated encryption key.
-- **`decrypt.py`**: This script (intended to be implemented) will decrypt the encrypted files using the stored key.
+- **`decrypt.py`**: This script decrypts the encrypted files using the stored key.
 - **`thekey.key`**: The generated key file used for encryption and decryption.
 
 ## How It Works
@@ -35,7 +35,7 @@ python3 ransomware.py
 ```
 This will encrypt all non-excluded files in the directory.
 
-### Decrypt Files (To be implemented):
+### Decrypt Files:
 Run the decryption script:
 ```sh
 python3 decrypt.py
