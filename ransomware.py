@@ -12,9 +12,15 @@ def find_files():
 
 def generate_key():
     """Generate and securely store an encryption key."""
-    key = Fernet.generate_key()
-    with open("thekey.key", "wb") as key_file:
-        key_file.write(key)
+    if os.path.exists("thekey.key"):
+        with open("thekey.key", "rb") as key_file:
+            key = key_file.read()
+        logging.info("Existing key loaded from thekey.key")
+    else:
+        key = Fernet.generate_key()
+        with open("thekey.key", "wb") as key_file:
+            key_file.write(key)
+        logging.info("New encryption key generated and saved to thekey.key")
     return key
 
 def encrypt_files(files, key):
